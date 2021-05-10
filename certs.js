@@ -1,20 +1,16 @@
 const fs = require('fs')
 const pem = require('pem');
 const NodeRSA = require('node-rsa');
-
-const PFX_PATH = __dirname + '/CoreitPecatSoft.pfx';
-const PFX_PASSWORD = '123456';
-const PRIVATE_KEY_PATH = __dirname + '/private.key';
-const PUBLIC_CERT_PATH = __dirname + '/certificate.pem';
+const config = require('./config');
 
 module.exports = {
 
     extractCertificates: function () {
-        const pfx = fs.readFileSync(PFX_PATH);
-        pem.readPkcs12(pfx, {p12Password: PFX_PASSWORD}, (err, cert) => {
+        const pfx = fs.readFileSync(config.Certificate.pfxPath);
+        pem.readPkcs12(pfx, {p12Password: config.Certificate.pfxPassword}, (err, cert) => {
 
             // Saving Public Key
-            fs.writeFileSync(PUBLIC_CERT_PATH, cert.cert);
+            fs.writeFileSync(config.Certificate.publicCertPath, cert.cert);
 
             // Obtaining Private Key
             const RSAKey = cert.key;
@@ -22,17 +18,17 @@ module.exports = {
             const privateKey = key.exportKey('pkcs8');
 
             // Saving Private Key
-            fs.writeFileSync(PRIVATE_KEY_PATH, privateKey);
+            fs.writeFileSync(config.Certificate.privateKeyPath, privateKey);
         });
     },
 
     privateKey: function () {
-        return fs.readFileSync(PRIVATE_KEY_PATH).toString();
+        return fs.readFileSync(config.Certificate.privateKeyPath).toString();
     },
 
     publicCertificate: function () {
         // Removing placeholder parts from certificate.pem file
-        return fs.readFileSync(PUBLIC_CERT_PATH).toString()
+        return fs.readFileSync(config.Certificate.publicCertPath).toString()
             .replace('-----BEGIN CERTIFICATE-----', '')
             .replace('-----END CERTIFICATE-----', '')
             .trim();

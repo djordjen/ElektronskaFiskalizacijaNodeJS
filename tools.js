@@ -9,14 +9,12 @@ const https = require('https');
 module.exports = {
 
     generateUUID: function () {
-        const fresh_uuid = uuid.v4();
-        return fresh_uuid;
+        return uuid.v4();
     },
 
     generateDateTime: function () {
         const now = new Date().toLocaleString("en-US", {timeZone: "Europe/Podgorica"});
-        const currentDateTime = dateFormat(now, 'yyyy-mm-dd"T"HH:MM:ssp');
-        return currentDateTime;
+        return dateFormat(now, 'yyyy-mm-dd"T"HH:MM:ssp');
     },
 
     generateIIC: function (taxpayerID, currentDateTime, invoiceOrd, businessUnit, enuCode, softwareCode, totalPrice) {
@@ -34,12 +32,11 @@ module.exports = {
 
     sendToPU: async function (xmlData) {
         const agent = new https.Agent({rejectUnauthorized: false});
-        const response = await axios.post('https://efitest.tax.gov.me:443/fs-v1', xmlData,
+        return await axios.post('https://efitest.tax.gov.me:443/fs-v1', xmlData,
             {
                 headers: {'Content-Type': 'text/xml'},
                 httpsAgent: agent
             });
-        return response;
     },
 
     roundNo: function (x) {

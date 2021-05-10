@@ -1,12 +1,19 @@
 {
   "name": "NodeJS-ElektronskaFiskalizacija",
   "version": "1.0.0",
-  "description": "",
+  "description": "Primjer otpakivanja PFX sertifikata, generisanja IKOF-a, potpisivanja XML-a i slanja na Web servis PU",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "run": "node index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "elektronska",
+    "fiskalizacija",
+    "montenegro",
+    "nodejs",
+    "javascript"
+  ],
   "author": "Djordje Najdanovic",
   "license": "ISC",
   "dependencies": {
@@ -15,11 +22,12 @@
     "dateformat": "^4.4.1",
     "dotenv": "^8.2.0",
     "https": "^1.0.0",
+    "jest": "^26.6.3",
     "md5": "^2.3.0",
     "node-rsa": "^1.1.1",
     "pem": "^1.14.4",
     "uuid": "^8.3.2",
-    "xml-crypto": "^2.0.0",
+    "xml-crypto": "^2.1.2",
     "xmlbuilder2": "^2.4.0"
   }
 }

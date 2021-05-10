@@ -9,5 +9,11 @@ module.exports = {
     Seller: {
         IDType: 'TIN',
         Name: 'Test d.o.o.'
+    },
+    Certificate: {
+        pfxPath: './certificates/CoreitPecatSoft.pfx',
+        pfxPassword: '123456',
+        privateKeyPath: './certificates/private.key',
+        publicCertPath: './certificates/certificate.pem'
     }
 };

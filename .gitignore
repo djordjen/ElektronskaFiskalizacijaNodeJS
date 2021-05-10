@@ -123,5 +123,8 @@ dist
 # IntelliJ project files
 .idea
 *.iml
-out
 gen
+
+# Example files
+request.xml
+response.xml

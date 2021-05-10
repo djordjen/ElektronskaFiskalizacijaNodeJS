@@ -4,6 +4,9 @@ const fs = require('fs');
 const tools = require('./tools');
 const xmls = require('./xmls');
 
+const certs = require('./certs');
+certs.extractCertificates();
+
 // Declaring Test Invoice object for sending to `PU`
 const invoice = {
     ORD: 1,                                 // Invoice Ordinal Number
