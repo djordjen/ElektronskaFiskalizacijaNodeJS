@@ -17,7 +17,7 @@
   "author": "Djordje Najdanovic",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "crypto": "^1.0.1",
     "dateformat": "^4.4.1",
     "dotenv": "^8.2.0",
